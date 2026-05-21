@@ -62,39 +62,58 @@ def extract_links(html, current_url):
 
 def crawl_website(start_url=BASE_URL):
     """
-    Crawl the website and return a dictionary:
-    {
-        url: page_text
-    }
+    crawll quote pages using pagination only
     """
     visited = set()
-    to_visit = [start_url]
+    # to_visit = [start_url]
     pages = {}
 
-    while to_visit:
-        current_url = to_visit.pop(0)
-
-        if current_url in visited:
-            continue
-
+    current_url = start_url
+    
+    while current_url and current_url not in visited:
         print(f"Crawling: {current_url}")
-
         html = get_page(current_url)
 
         if html is None:
-            visited.add(current_url)
-            continue
-
+            break
+        
         text = extract_text(html)
         pages[current_url] = text
-
+        
         visited.add(current_url)
+        
+        soup = BeautifulSoup(html, "html.parser")
 
-        new_links = extract_links(html, current_url)
+        next_button = soup.select_one("li.next a")
 
-        for link in new_links:
-            if link not in visited and link not in to_visit:
-                to_visit.append(link)
+        if next_button:
+            next_url = urljoin(current_url, next_button["href"])
+        else:
+            next_url = None
+        
+        current_url = next_url
+
+        #if current_url in visited:
+        #    continue
+
+        #print(f"Crawling: {current_url}")
+
+        #html = get_page(current_url)
+
+        #if html is None:
+        #    visited.add(current_url)
+        #    continue
+
+        #text = extract_text(html)
+        #pages[current_url] = text
+
+        #visited.add(current_url)
+
+        #new_links = extract_links(html, current_url)
+
+        #for link in new_links:
+        #    if link not in visited and link not in to_visit:
+        #        to_visit.append(link)
 
         time.sleep(POLITENESS_DELAY)
 
