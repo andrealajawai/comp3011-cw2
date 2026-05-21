@@ -35,7 +35,8 @@ def main():
         elif command == "load":
             try:
                 index = load_index()
-                print("Index loaded.")
+                if index is not None:
+                    print("Index loaded.")
             except FileNotFoundError:
                 print("No saved index found. Please run build first!")
 

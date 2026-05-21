@@ -32,11 +32,24 @@ def build_index(pages):
 
 def save_index(index, filename="data/index.json"):
     """Save index to a JSON file."""
-    with open(filename, "w", encoding="utf-8") as file:
-        json.dump(index, file, indent=2)
+    try:
+        with open(filename, "w", encoding="utf-8") as file:
+            json.dump(index, file, indent=2)
+
+    except Exception as error:
+        print(f"Error saving index: {error}")
 
 
 def load_index(filename="data/index.json"):
     """Load index from a JSON file."""
-    with open(filename, "r", encoding="utf-8") as file:
-        return json.load(file)
+    try:
+        with open(filename, "r", encoding="utf-8") as file:
+            return json.load(file)
+    
+    except FileNotFoundError:
+        print("Index file not found.")
+        return None
+    
+    except json.JSONDecodeError:
+        print("Index file is corrupted.")
+        return None
