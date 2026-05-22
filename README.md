@@ -90,20 +90,20 @@ Loads the saved index from the filesystem.
 ### Print a word entry
 
 ```text
-print life
+print <query>
 ```
 
-Displays the inverted index entry for a word.
+Displays the inverted index entry for a word. Replace "<query>" with word of choice.
 
 ---
 
 ### Search for pages
 
 ```text
-find good friends
+find <query1> <query2>
 ```
 
-Returns pages containing all query words ranked by frequency.
+Returns pages containing all query words ranked by frequency. Replace "<query>" with word of choice.
 
 ---
 
