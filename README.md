@@ -93,7 +93,7 @@ Loads the saved index from the filesystem.
 print <query>
 ```
 
-Displays the inverted index entry for a word. Replace "<query>" with word of choice.
+Displays the inverted index entry for a word. Replace "query" with word of choice.
 
 ---
 
@@ -103,7 +103,7 @@ Displays the inverted index entry for a word. Replace "<query>" with word of cho
 find <query1> <query2>
 ```
 
-Returns pages containing all query words ranked by frequency. Replace "<query>" with word of choice.
+Returns pages containing all query words ranked by frequency. Replace "query" with word of choice.
 
 ---
 
