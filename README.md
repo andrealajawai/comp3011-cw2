@@ -4,7 +4,7 @@
 
 This project is a search engine tool for COMP3011 Web Services and Web Data.
 
-The tool crawls the website https://quotes.toscrape.com/, creates an inverted index of all words found on the pages, and allows users to search for words and phrases through a command-line interface.
+The search engine tool crawls the website https://quotes.toscrape.com/ which creates an inverted index of all words found on the pages. It also allows users to search for words and phrases from the stored index through a command-line interface.
 
 ---
 
